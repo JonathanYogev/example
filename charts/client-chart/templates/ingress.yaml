@@ -23,7 +23,7 @@ spec:
             pathType: {{ .pathType }}
             backend:
               service:
-                name: {{ .Release.Name }}-client
+                name: {{ .Chart.Name }}-client
                 port:
                   number: {{ .Values.service.port }}
           {{- end }}
