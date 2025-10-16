@@ -1,10 +1,9 @@
-{{- if .Values.service.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
-  name: staging-client-client
+  name: {{ include "client-chart.fullname" . }}
   labels:
-    app: staging-client-client
+    {{- include "client-chart.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -13,5 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: staging-client-client
-{{- end -}}
+    {{- include "client-chart.selectorLabels" . | nindent 4 }}
