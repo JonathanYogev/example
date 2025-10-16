@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+npm-debug.log
+.env
+*.log
+
+# Docker
+*.dockerignore
+*.tar
+
+# Kubernetes/Helm
+*.kubeconfig
+.helm/
+charts/*/charts/ # Ignore nested charts if any
+
+# OS/IDE
+.vscode/
+.idea/
+.project
+.settings/
+.classpath
+*.swp
+*~
+.DS_Store
+Thumbs.db
