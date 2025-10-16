@@ -25,6 +25,6 @@ spec:
               service:
                 name: staging-client-client
                 port:
-                  number: 80 # Hardcoded for debugging
+                  number: {{ .Values.service.port }}
           {{- end }}
     {{- end }}
