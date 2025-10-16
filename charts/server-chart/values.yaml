@@ -1,0 +1,36 @@
+# values.yaml for the Server Application
+
+replicaCount: 1
+
+image:
+  repository: 370924438764.dkr.ecr.il-central-1.amazonaws.com/practice-project-server
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 3001
+
+# Resource requests and limits
+# These are minimal values suitable for a t3.micro
+resources:
+  limits:
+    cpu: 200m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 64Mi
+
+# Liveness and readiness probes
+probes:
+  liveness:
+    path: "/health/live"
+    port: 3001
+  readiness:
+    path: "/health/ready"
+    port: 3001
+
+# We are not using an Ingress for this example
+ingress:
+  enabled: false
+

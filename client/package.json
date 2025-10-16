@@ -1,0 +1,17 @@
+{
+  "name": "api-client",
+  "version": "1.0.0",
+  "description": "Node.js client for the EKS demo API.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nock": "^13.3.3"
+  }
+}
