@@ -1,9 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}-client
+  name: {{ .Chart.Name }}-client
   labels:
-    app: {{ .Release.Name }}-client
+    app: {{ .Chart.Name }}-client
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
