@@ -1,16 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Chart.Name }}-client
+  name: {{ include "client-chart.fullname" . }}
   labels:
-    app: {{ .Chart.Name }}-client
+    {{- include "client-chart.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
   annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-    {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
-    {{- end }}
+  {{- end }}
 spec:
   ingressClassName: {{ .Values.ingress.className }}
   rules:
@@ -23,7 +20,7 @@ spec:
             pathType: {{ .pathType }}
             backend:
               service:
-                name: {{ .Chart.Name }}-client
+                name: {{ include "client-chart.fullname" . }}
                 port:
                   number: {{ .Values.service.port }}
           {{- end }}
