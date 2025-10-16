@@ -1,10 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ if .Release }}{{ .Release.Name }}-client{{ else }}client-release-client{{ end }}
+  name: staging-client-client
   labels:
     app.kubernetes.io/name: client-chart
-    app.kubernetes.io/instance: {{ if .Release }}{{ .Release.Name }}{{ else }}client-release{{ end }}
+    app.kubernetes.io/instance: staging-client
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
@@ -26,7 +26,7 @@ spec:
             pathType: {{ .pathType }}
             backend:
               service:
-                name: {{ if .Release }}{{ .Release.Name }}-client{{ else }}client-release-client{{ end }}
+                name: staging-client-client
                 port:
                   number: 80
           {{- end }}

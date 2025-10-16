@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ if .Release }}{{ .Release.Name }}-client{{ else }}client-release-client{{ end }}
+  name: staging-client-client
   labels:
     app.kubernetes.io/name: client-chart
-    app.kubernetes.io/instance: {{ if .Release }}{{ .Release.Name }}{{ else }}client-release{{ end }}
+    app.kubernetes.io/instance: staging-client
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -14,4 +14,4 @@ spec:
       name: http
   selector:
     app.kubernetes.io/name: client-chart
-    app.kubernetes.io/instance: {{ if .Release }}{{ .Release.Name }}{{ else }}client-release{{ end }}
+    app.kubernetes.io/instance: staging-client
