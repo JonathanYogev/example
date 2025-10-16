@@ -6,11 +6,13 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-client
+      app.kubernetes.io/name: client-chart
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-client
+        app.kubernetes.io/name: client-chart
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
         - name: client
