@@ -100,7 +100,7 @@ jobs:
           version: ${{ env.HELM_VERSION }}
 
       - name: Helm Lint Client Chart
-        run: helm lint ./charts/client-chart -f charts/client-chart/lint-values.yaml
+        run: helm lint ./charts/client-chart
 
       - name: Helm Template Client Chart
         run: helm template staging-client ./charts/client-chart --namespace staging --set serverUrl=http://staging-server-server-chart:3001,image.tag=${{ env.IMAGE_TAG }}

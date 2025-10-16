@@ -1,5 +1,0 @@
-fullnameOverride: "client-chart-mock-fullname"
-nameOverride: "client-chart-mock-name"
-Release:
-  Name: "client-release"
-  Service: "Helm"
