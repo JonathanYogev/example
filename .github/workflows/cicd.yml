@@ -13,7 +13,7 @@ env:
   ECR_SERVER_REPO: 370924438764.dkr.ecr.il-central-1.amazonaws.com/practice-project-server
   ECR_CLIENT_REPO: 370924438764.dkr.ecr.il-central-1.amazonaws.com/practice-project-client
   EKS_CLUSTER_NAME: practice-cluster
-  KUBECTL_VERSION: 'v1.32' # Using v1.32 with the correct 'v' prefix
+  KUBECTL_VERSION: 'v1.32.0' # Trying with full semantic version string
   HELM_VERSION: 'v3.14.0' # Updated to a more recent stable version
   IMAGE_TAG: ${{ github.sha }} # Use commit SHA for tagging
 
