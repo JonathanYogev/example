@@ -8,11 +8,23 @@ image:
 
 # The client doesn't need a service, it only makes outbound calls
 service:
-  enabled: false
+  enabled: true
+  type: ClusterIP
+  port: 80
 
 # We are not using an Ingress for this example
 ingress:
-  enabled: false
+  enabled: true
+  className: alb
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+  hosts:
+    - host: client.example.com # Replace with your desired hostname
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
 
 # URL for the server it needs to connect to.
 # This will be the name of the server's Kubernetes service.
