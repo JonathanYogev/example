@@ -14,14 +14,8 @@ metadata:
     {{- end }}
 spec:
   ingressClassName: alb
-  rules:
-    - host: client.example.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: staging-client-client
-                port:
-                  number: 80
+  defaultBackend:
+    service:
+      name: staging-client-client
+      port:
+        number: 80

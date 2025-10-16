@@ -18,11 +18,7 @@ ingress:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-  hosts:
-    - host: client.example.com # Replace with your desired hostname
-      paths:
-        - path: /
-          pathType: Prefix
+  # Removed hosts entry to allow direct ALB DNS access
 
 serverUrl: "http://staging-server-server-chart:3001"
 
