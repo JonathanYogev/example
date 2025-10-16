@@ -58,11 +58,16 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Build and push Server Docker image
         run: |
-          docker build -t server-image ./server
-          docker tag server-image:latest ${{ env.ECR_SERVER_REPO }}:${{ env.IMAGE_TAG }}
-          docker push ${{ env.ECR_SERVER_REPO }}:${{ env.IMAGE_TAG }}
+          docker buildx build \
+            --cache-from=type=registry,ref=${{ env.ECR_SERVER_REPO }}:buildcache \
+            --cache-to=type=registry,ref=${{ env.ECR_SERVER_REPO }}:buildcache,mode=max \
+            --tag ${{ env.ECR_SERVER_REPO }}:${{ env.IMAGE_TAG }} \
+            --push ./server
 
   deploy-staging-server:
     runs-on: ubuntu-latest
