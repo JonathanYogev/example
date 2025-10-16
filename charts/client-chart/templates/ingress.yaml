@@ -28,6 +28,6 @@ spec:
               service:
                 name: {{ if .Release }}{{ .Release.Name }}-client{{ else }}client-release-client{{ end }}
                 port:
-                  number: {{ .Values.service.port }}
+                  number: 80
           {{- end }}
     {{- end }}
